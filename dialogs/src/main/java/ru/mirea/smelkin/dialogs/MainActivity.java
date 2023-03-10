@@ -1,6 +1,9 @@
 package ru.mirea.smelkin.dialogs;
 
 import static android.Manifest.permission.POST_NOTIFICATIONS;
+
+import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -9,9 +12,11 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -31,36 +36,37 @@ public class MainActivity extends AppCompatActivity {
 
         //проверка разрешения
 
-        if(ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED)
-        {
+        if (ContextCompat.checkSelfPermission(this, POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
             Log.d(MainActivity.class.getSimpleName().toString(), "разрешение получено");
-        }
-        else
-        {
-            Log.d(MainActivity.class.getSimpleName(),"не получено разршение");
+        } else {
+            Log.d(MainActivity.class.getSimpleName(), "не получено разршение");
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, PermissionCode);
         }
     }
 
-    public void Toast_click(View view)
-    {
+    public void Toast_click(View view) {
         EditText text_ed = (EditText) findViewById(R.id.editTextTextPersonName);
 
-        Toast.makeText(getApplicationContext() , String.format("Студент %s. кол-во символов %s", text_ed.getText().toString(), text_ed.getText().toString().length()), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), String.format("Студент %s. кол-во символов %s", text_ed.getText().toString(), text_ed.getText().toString().length()), Toast.LENGTH_SHORT).show();
     }
 
     private static final String CHANNEL_ID = "com.smelkin.asd.notification.ANDROID";//почему именно это?
-    public void send_notification(View view)
-    {
 
-        if (ActivityCompat.checkSelfPermission(this, POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
-        {
+    public void send_notification(View view) {
+
+        if (ActivityCompat.checkSelfPermission(this, POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID).setContentText("test").setSmallIcon(R.drawable.ic_launcher_background).setPriority(NotificationCompat.PRIORITY_HIGH).setStyle(new NotificationCompat.BigTextStyle().bigText("loooooooooooo ...  ooooooooooooooooooooooooooooooooooooooooooooo ... oooooong text")).setContentTitle("mirea");
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentText("test")
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText("loooooooooooo ...  ooooooooooooooooooooooooooooooooooooooooooooo ... oooooong text"))
+                .setContentTitle("mirea");
 
-        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        int importance = NotificationManager.IMPORTANCE_HIGH;
 
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Smelkin", importance);
         channel.setDescription("MIREA");
@@ -69,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
         notificationManager.notify(1, builder.build());
 
     }
+
+
 
     public void popup(View view)
     {
