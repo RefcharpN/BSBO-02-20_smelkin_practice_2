@@ -1,25 +1,16 @@
 package ru.mirea.smelkin.dialogs;
 
 import static android.Manifest.permission.POST_NOTIFICATIONS;
-
-import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
-
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
-
-import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;

@@ -2,9 +2,6 @@ package ru.mirea.smelkin.hw;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import com.google.android.material.snackbar.Snackbar;
