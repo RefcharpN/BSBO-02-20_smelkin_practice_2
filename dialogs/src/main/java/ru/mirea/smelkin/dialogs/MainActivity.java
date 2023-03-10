@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext() , String.format("Студент %s. кол-во символов %s", text_ed.getText().toString(), text_ed.getText().toString().length()), Toast.LENGTH_SHORT).show();
     }
 
-    private static final String CHANNEL_ID = "com.mirea.asd.notification.ANDROID";//почему именно это?
+    private static final String CHANNEL_ID = "com.smelkin.asd.notification.ANDROID";//почему именно это?
     public void send_notification(View view)
     {
 

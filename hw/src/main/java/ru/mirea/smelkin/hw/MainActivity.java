@@ -2,13 +2,11 @@ package ru.mirea.smelkin.hw;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
-
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Calendar;
@@ -36,5 +34,10 @@ public class MainActivity extends AppCompatActivity {
     public void show_date(View view)
     {
         MydateDialog dialog = new MydateDialog(MainActivity.this);
+    }
+
+    public void show_progres(View v)
+    {
+        MyProgresDialog dialog = new MyProgresDialog(MainActivity.this);
     }
 }
