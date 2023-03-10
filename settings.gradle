@@ -1,0 +1,21 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "practice_2"
+include ':app'
+include ':actyvitylifecycle'
+include ':multyactivity'
+include ':secondactivity'
+include ':intentfilter'
+include ':dialogs'
